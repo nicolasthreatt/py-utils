@@ -1,0 +1,130 @@
+Design Patterns
+    - Well-known solutions to recurring problems
+        + Widely accepted solutions by the software development community
+    - Object Oriented programming environment
+
+Why Use Design Patterns?
+    - System reuse of design ideas or best practices yields lower cost and higher quality
+
+Important Characteristics
+    - Language neutral
+    - Dynamic
+    - Incomplete by design to promote customization
+
+Design Pattern Types
+    - Creational
+        + Definition
+            -> Used to create objects in a systematic way
+        + Benefits
+            -> Flexibility
+            -> Example: Different subtypes of objects from the same class at runtime
+        + Object-Oriented Mechanisms Used
+            -> Polymorphism
+        + Types
+            -> Singleton
+            -> Factory
+            -> Abstract Factory
+            -> Builder
+            -> Prototype
+    - Structural
+        + Definition
+            -> Establishes useful relationships between software components in certain configurations
+            -> To accomplish a goal: both functional and nonfunctional
+            -> Different goals yeild different structures
+            -> Assemble classes and their instances
+        + Object-Oriented Mechanisms Used
+            -> Inheritance
+        + Types
+            -> Decorator
+            -> Proxy
+            -> Adapter
+            -> Composite
+            -> Bridge
+    - Behavioral
+        + Definition
+            -> Best practices of objects interaction
+            -> Regulate communcations among objects
+        + Focus
+            -> Define the protocols in between objects when they're trying to work together to
+               accomplish a common goal
+        + Object-Oriented Mechanisms Used
+            -> Methods and their signatures
+        + Types
+            -> Observer
+            -> Visitor
+            -> Iterator
+            -> Strategy
+            -> Chain of Responsibility
+
+Inheritance
+    - Establishes a relationship between two classes a 'Parent' and 'Child'
+        + Child Class
+            -> Keeps the attributes and methods of its parent
+            -> Adds new attributes or methods of its own
+            -> Overrides the exisiting methods of its parent
+
+Polymorphism
+    - Relies on inheritance
+    - Allows child classes to be instantiated and treated as the same type as its parent
+    - Enables a parent class to be manifested into any of its child classes
+
+Pattern Context
+    - Participants
+        + Classes involved to form a design pattern
+        + Roles
+    - Quality attributes
+        + Nonfunctional requirements
+            -> Usability, modifiability, reliability, performance, etc
+        + Effect on the entire software
+            -> Architectural solutions
+    - Forces
+        + Various factors or trade-offs to consider:
+            -> Manifested in quality
+            -> Unintended consequences
+    - Consequences
+        + Side effects:
+            -> Better security but worse performance
+        + Decision makers
+            -> Despite the consequences
+
+Pattern Language
+    - Name
+        + Should capture the gist of the pattern
+        + Becomes part of a vocabulary during the design process
+    - Context
+        + Provides a scenario when a pattern may be used
+        + Provides more insights when to use a pattern and when not to use a pattern
+    - Problem
+        + Describes a design challenge that a pattern is addressing
+    - Solution
+        + Specifeis a pattern
+            -> Structure: Relationship among elements
+            -> Behavior: Interactions between elements used in the patterns
+    - Related Patterns
+        + Lists other patterns used together with the pattern being described
+
+Coupling and Cohesion
+    - Coupling
+        + The degree to which your software elements are connected
+    - Cohesion
+        + The degree of independence
+
+Architectural vs. Design Patterns 
+    - Design Patterns
+        + Low-Level and Concrete
+            -> Are at the class Level
+            -> Address how classes are instantiated, structured, and orchestrated
+        + Impact is local
+        + More directly connected to functional requirements
+        + Indirectly affect the quality attributes
+    - Architectural Patterns 
+        + High-Level and Abstract
+            -> Are at the module level
+            -> Address global concerns, such as security, performance, maintainability, etc.
+        + Impact is global
+
+Framework
+    - Collection of resusable software elements
+    - Implements design patterns
+    - Allow developers to reuse code through application programming interfaces (APIs)
+
