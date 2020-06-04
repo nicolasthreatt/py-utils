@@ -1,0 +1,130 @@
+Parallel Computing Memory Architecture
+    - Computer systems are classified into four categories
+        + Single Instruction Single Data (SISD)
+            - Operations executed by CPU
+                -> Fetch: Fetches the data and instructions from a memory area called register
+                -> Decode: The CPU decodes the instructions
+                -> Execute: The instruction is carried out on the data and the results of the operation is stored in another register
+            - Instructions are processed sequentially
+            - Main Elements of SISD Architecture
+                -> Central Memory Unit
+                -> CPU
+                -> The I/O System
+        + Single Instruction Multiple Data (SIMD)
+            - A SIMD computer consists of 'n' identical procressors, each with its own local memory, where its possible to store data
+            - The procressors work simultaneously on each step and execute the same instruction, but on different data elements
+            - The algorithms for these computers are relatively easy to design, analyze, and implement
+            - Connection Machine (1985 Thinking Machine) and MPP (NASA - 1983)
+        + Multiple Instructions Single Data (MISD)
+            - Similar to SISD
+            - n procressors share a single memory unit
+        + Multiple Instructions Multiple Data (MIMD)
+            - Similar to SIMD
+            - 'n' processors in instruction steams and 'n' data streams
+            - Each processors has its own control unit and local memory
+            - Each processors operates under the control of a flow of instructions issued by its own control unit
+            - Processors can run different programs on different data which means processes run asynchronously
+            - Implementation of threads and processes
+
+Memory Organization
+    - Intro:
+        + Memory Organization is the way which the data is accessed
+        + The main problem: Making the response time of the memory compatible with the speed of the processor
+        + When the processor starts transferring data, the memory will remain occupied for the entire time of the memory cycle
+    - Shared vs. Distributed Memory
+        + Shared Memory
+            -> The 'i' index is a global address and the memory location 'i' is the same for each processor
+            -> Features
+                * Memory is the same for all processors
+                * The synchronization is made possible by control the access of processors to the shared memory
+                * A shared memory location must not be changed
+                * Sharing data is fast
+            -> Memory Access Types
+                * Uniform memory access (UMA)
+                * Non-Uniform memory access (NUMA)
+                * No remote memory access (NORMA)
+                * Cache only memory acces (COMA)
+        + Distributed Memory
+            -> 'i' is a local address
+            -> Features
+                * Memory is physically distributed between processors
+                * Synchronization is achieved by moving data between processors
+                * The subdivision of data in the local memories affects the performance of the machine
+                * The message-passing protocol is used
+            -> Advantages
+                * No conflicts at the level of the communication bus or switch
+                * No instrinsic limit to the number of processors
+                * There are no problems of cache coherency
+            -> Disadvantages
+                * The communication between processors is more difficult to implement
+                * If a processor requires data in the memory of another processor, the two processors should necessarily exchange
+                  messages via the message-passing protocol
+                * To bukd and send a message from one processor to another takes time
+                * Any processor should be stopped in order to mamage the messages received from other processors
+                * A program is designed to work on a distributed memory system must be organized
+
+Parallel Programming Models
+    - Shared Memory Model
+        + Tasks share a single shared memory area
+        + Mechanisms allow the programmer to control the access to the shared memory
+        + Advantage:
+            -> Programmer does not have to clarify the communication between tasks
+        + Disadvantage:
+            -> It becomes more difficult to understand and manage data locality
+        + Keeping data local to the processor that works on it conserves memory accesses, cache, refreshes, and bus traffic
+    - Multithread Model
+        + A process can have multiple flows of execution
+        + Used on shared memory architectures
+        + The current generation CPUs are multithreaded in software and hardware
+        + The Intel Hyper-threading technology implements multithreading on hardware
+        + Parallelism can be achieved from this model
+    - Distributed Memory Message Passing Model
+        + Applied in the case where each processor has its own memory (distributed memory systems)
+        + Requires the use of (ad hoc) software libaries to be used within the code
+        + The MPI model is designed clearly with distributed memory
+    - Data Parallel Model
+        + More tasks operate on the same data structure, but each task operates on a different portion of data
+        + To implement this model, a programmer must develop a program that specifies the distribution and alignment of data
+        + The current generation GPUs operates high throughout with the data aligned
+
+Designing a Parallel Program
+    - Task Decomposition
+        + Software program is split into tasks or set of instructions to implement parallelism
+            -> Domain Decomposition
+                * The data of the problems is decomposed
+            -> Functional Decomposition
+                * The problem is split into task
+    - Task Assignment
+        + Mechanism by whic hthe task will be distributed among the various processes is specified
+        + It establishes the distribution of workload among the various processors
+        + The programmer takes into account the possible heterogeneity of the system
+        + For greater efficiency of parallelization, it is necessary to limit communication
+    - Agglomeration
+        + The process of combining smaller tasks with larger ones in order to improve performance
+        + Tasks have to be communicated to the processor or thread
+        + Most communication has costs that are not only proportional with the amount of data transferred, but also incur a fixed cost
+          for every communcation operation
+        + If the tasks are too small, this fixed cost can easily make the design inefficient
+    - Mapping
+        + In the mapping stage of the parallel algorithm design process, we specify where each task is to be executed
+        + The goal is to minimize the total execution time
+        + You can often make tradeoffs, as the two main strategies often conflict with each other which are:
+            1. The tasks that communicate frequently should be placed in the same processor to increase locality
+            2. The taks that can be executed concurrently should be placed in different processors to enhance concurrently
+        + No polynomial time solutions to the problem in the general case exist
+        + For tasks of equal size and tasks with easily identified communication patters, the mapping is straightforward
+        + Load balancing algorithms - Identify agglomeration and mapping strategies during runtime
+        + Dynamic load balancing algorithms - Run periodically during the execution
+    - Dynamic Mapping
+        + Global algorithms require global knowledge of the computation being performed which often adds a lot of overhead
+        + Local algorithms rely only on information that is local to the task in question, which reduces overhead
+        + A task-scheduling algorithm is often used that simply maps tasks to processors as they become idle
+        + Taks are placed in task pool and are taken from it by workers 
+        + Thee Common Approaches
+            1. Manager/Worker
+                -> Basic dynamic mapping scheme in which all the owrkers connect to a centralized Manager
+            2. Hierachial Manager/Worker:
+                -> Variant of a manager/worker that has a semi-distributed layout; workers are split into groups, each with their own manager
+            3. Decentralize
+                -> Each processor maintains its own task pool and communicates with the other processors in order to request tasks
+        
