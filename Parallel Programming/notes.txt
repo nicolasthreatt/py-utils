@@ -127,4 +127,35 @@ Designing a Parallel Program
                 -> Variant of a manager/worker that has a semi-distributed layout; workers are split into groups, each with their own manager
             3. Decentralize
                 -> Each processor maintains its own task pool and communicates with the other processors in order to request tasks
-        
+
+Working with Processes in Python
+    - What is a Process?
+        + It is an executing instance of an application
+        + A process can consist of multiple parallel threads
+        + Starting the browser, the operating system creates a process and begins executing the primary threads of that process
+    - Python Programming with Processes
+        + On commin operating systems, each program runs in its own process
+        + A process has its own space address, data stack, and other auxiliary data to keep track of the execution
+        + The OS manages the execution of all processes
+
+Working with Threds in Python
+    - What is a Thread?
+        + A thread is an active flow of control that can be activated in parallel with other threads within the same process
+        + Each thread can execute a set of instructions independently and in parallel with other processes or threads
+        + They share space addressing and then the data structures
+        + A thread is sometimes called a lighweight process
+        + The plementation of a thread is less onerous than that of a real process
+    - Python Programming with Threads
+        + Thread-based parallelism is the standard way of writing parallel programs
+        + The Python interpreter is not fully thread-safe
+        + In order to support multithreaded Python programs, a global lock called the Global interpreter Lock (GIL) is used
+        + Only one thread can execute the Python code at the same time
+        + Python automatically switches to the next thread after a short period of time
+        + In multiple threads attempt to access the same data object, it may end up in an inconsistent state
+
+Process vs. Threads
+    - A process can consist of multiple parallel threads
+    - The creation and management of a thread by the operating system is less expensive in term of CPU's resources than the creation and
+      management of a process
+    - Threads are used for small tasks, whereas processes are used for more heavyweight tasks
+    - The threads of the same process share the address space and other resources, while processes are independent of each other
