@@ -159,3 +159,16 @@ Process vs. Threads
       management of a process
     - Threads are used for small tasks, whereas processes are used for more heavyweight tasks
     - The threads of the same process share the address space and other resources, while processes are independent of each other
+
+The Python Threading Module
+    - Python manages a thread via the threading package
+    - It provides some very interesting features that make the threading-based approach easier
+    - The threading module prodives several synchronization mechanisms that are very simple to implement
+
+Majaor Components of the Threading Module
+    - Thread object
+    - Lock object
+    - RLock object
+    - Semaphore object
+    - Conditional object
+    - Event object

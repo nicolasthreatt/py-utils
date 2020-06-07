@@ -4,10 +4,9 @@ from threading import Thread
 # Use the sleep function to make the thread "sleep"
 from time import sleep
 
+
 # To create a thread in Python you'll want to make your class work as a thread.
 # For this, you should subclass your class from the Thread class
-
-
 class TraditonalStat(Thread):
     def __init__(self):
         Thread.__init__(self)
