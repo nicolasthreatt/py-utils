@@ -2,6 +2,16 @@
 Program Description:
     - Performing four tests using different functions
 
+GIL
+    - It is the lock introduced by the CPython interpreter
+    - It prevents parallel execution of multiple threads in the interpreter
+    - Before being executed each thread must ait for the GIL to release the thread that is running
+    - It prevents concurrent access to Python objects from different threads
+    - It protects the memory of the interpreter and makes the garbage work in the right manner
+    - It prevents the programmer from improving the performance by executing threds in parallel
+    - It we remove the GIL from the CPython interpreter, the threads would be executed in parallel
+    - The GIL does not prevent a process from running of a different processor, it simple allows only one thread at a time to turn inside the interpreter
+
 '''
 
 from threading import Thread
@@ -55,17 +65,13 @@ print('Starting tests')
 for i in num_threads:
     t = Timer("non_threaded(%s)"
               % i, "from __main__ import non_threaded")
-    best_result =\
-        min(t.repeat(repeat=repeat, number=number))
-    show_results("non_threaded (%s iters)"
-                 % i, best_result)
+    best_result = min(t.repeat(repeat=repeat, number=number))
+    show_results("non_threaded (%s iters)" % i, best_result)
 
     t = Timer("threaded(%s)"
               % i, "from __main__ import threaded")
-    best_result = \
-        min(t.repeat(repeat=repeat, number=number))
-    show_results("threaded (%s threads)"
-                 % i, best_result)
+    best_result = min(t.repeat(repeat=repeat, number=number))
+    show_results("threaded (%s threads)" % i, best_result)
 
 
 print('Iterations complete')
