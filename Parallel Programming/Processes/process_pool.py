@@ -1,7 +1,7 @@
 
 '''
 Program Description
-    - Implementing a proces pool to perform a parallel application
+    - Implementing a process pool to perform a parallel application
     - Creating a pool of four processes
     - Using the pool's map method to perform a simple calculation
 
