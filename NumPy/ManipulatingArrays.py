@@ -16,6 +16,62 @@ print()
 
 
 '''
+Add to NumPy array
+'''
+np_array_append = np.append(np_array, [23, 0, 7])
+print('Append New Elements to NumPy Array:')
+print(repr(np_array_append))
+print()
+
+
+'''
+Insert into NumPy Array
+'''
+index = 3
+np_array_insert = np.insert(np_array, index, [23, 0, 7])
+print('Insert into NumPy Array:')
+print(repr(np_array_insert))
+print()
+
+
+'''
+Delete an Element in Array
+'''
+index = 3
+np_array_delete = np.delete(np_array, index)
+print('Delete an Element in NumPy Array:')
+print(repr(np_array_delete))
+print()
+
+'''
+Concatentate a NumPy Array
+'''
+np_array_2 = [1, 2, 3, 5]
+np_array_concat = np.concatenate((np_array, np_array_2))
+print("Concatenated NumPy Array:")
+print(repr(np_array_concat))
+print()
+
+'''
+Split a NumPy Array
+'''
+index = 2
+np_array_split = np.split(np_array, index)
+print("Split NumPy Array:")
+print(repr(np_array_split))
+print()
+
+
+'''
+Get NumPy Array Type
+'''
+np_type = np_array.dtype
+print('NumPy Array Type using np_array.dtype:')
+print(np_type)
+print()
+
+
+'''
 Getting Length of NumPy Array
 '''
 py_len = len(np_array)
@@ -35,35 +91,6 @@ Get Number of Dimensions
 np_array_dimensions = np_array.ndim
 print("Number of Dimensions:")
 print(np_array_dimensions)
-print()
-
-
-'''
-Peform Arithmetic on NumPy Arrays
-'''
-mult_np_array = np_array * 10
-print('Multiply NumPy Array by 10:')
-print(repr(mult_np_array))
-print()
-
-
-'''
-Sum All Elements in an Array
-'''
-np_array_sum = np_array.sum()
-print('Sum All Elements in Simple Numpy Array:')
-print(repr(np_array_sum))
-print()
-
-
-'''
-NumPy Dot Product
-'''
-left_mat = np.arange(6).reshape((2, 3))
-right_mat = np.arange(15).reshape((3, 5))
-mat_dot = np.dot(left_mat, right_mat)
-print("Dot Product of [2x3] * [3x5]")
-print(repr(mat_dot))
 print()
 
 
